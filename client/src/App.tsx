@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <header>
-        <h1 className="logo">JS Monorepo</h1>
+        <h1 className="logo">WCS</h1>
       </header>
 
       <nav className="navbar">
@@ -37,10 +37,17 @@ function App() {
 
       <main className="text-box">
         <hgroup className="block-primary">
-          <h2 className="block-primary-main">JS Monorepo</h2>
-          <p className="block-primary-sub">Votre framework JavaScript</p>
+          <h2 className="block-primary-main">Wild Series</h2>
+          <a
+            href="http://localhost:3000/programs"
+            className="block-primary-sub"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Demandez le programme
+          </a>
         </hgroup>
-        <p>Vous avez lu le README ?</p>
+        <p>Prochainement sur votre écran</p>
       </main>
 
       <footer>

@@ -13,8 +13,8 @@ body {
 }
 
 #root {
-  height: 100vh;
-  background-image: url("./assets/images/background.webp");
+  min-height: 100vh;
+  background-color: #111;
   background-size: cover;
   background-position: top;
   display: grid;
@@ -79,6 +79,12 @@ header {
   display: block;
   font-weight: bold;
   letter-spacing: 7px;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.block-primary-sub:hover {
+  text-decoration: underline;
 }
 
 .btn:link,
