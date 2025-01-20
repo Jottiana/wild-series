@@ -18,6 +18,9 @@ import programActions from "./modules/program/programActions";
 
 router.get("/api/programs", programActions.browse);
 router.get("/api/programs/:id", programActions.read);
+router.post("/api/programs", programActions.add);
+router.put("/api/programs/:id", programActions.edit);
+router.delete("/api/programs/:id", programActions.delete);
 
 /* ************************************************************************* */
 

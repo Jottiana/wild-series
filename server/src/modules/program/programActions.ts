@@ -26,7 +26,8 @@ const programs = [
 // Declare the actions
 
 import type { RequestHandler } from "express";
-import ProgramRepository from "./ProgramRepository";
+import ProgramRepository from "./programRepository";
+import programRepository from "./programRepository";
 
 const browse: RequestHandler = async (req, res) => {
   const programsFromDB = await ProgramRepository.readAll();
@@ -46,6 +47,58 @@ const read: RequestHandler = (req, res) => {
   }
 };
 
+const add: RequestHandler = async (req, res, next) => {
+  try {
+    const newProgram = {
+      title: req.body.title,
+      synopsis: req.body.synopsis,
+      poster: req.body.poster,
+      country: req.body.country,
+      year: req.body.year,
+    };
+
+    const insertId = await programRepository.create(newProgram);
+
+    res.status(201).json({ insertId });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const id = Number(req.params.id);
+    const { title, synopsis, poster, country, year } = req.body;
+
+    const updated = await ProgramRepository.update(id, { title, synopsis, poster, country, year });
+
+    if (updated) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+
+const deleteProgram: RequestHandler = async (req, res, next) => {
+  try {
+    const id = Number(req.params.id);
+
+    const deleted = await ProgramRepository.delete(id);
+
+    if (deleted) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 // Export them to import them somewhere else
 
-export default { browse, read };
+export default {  browse, read, add, edit, delete: deleteProgram };
