@@ -1,0 +1,184 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.programs-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.programs-container h1 {
+  text-align: center;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+form {
+  background-color: #ffffff3c;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+form h2 {
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+form input,
+form textarea,
+form select,
+form button {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+.programs-list {
+  list-style: none;
+  padding: 0;
+}
+
+.programs-list li {
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.programs-list li img {
+  width: 120px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.programs-list li h2 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: #444;
+}
+
+.programs-list li p {
+  margin: 5px 0;
+  line-height: 1.5;
+  color: #666;
+}
+
+.programs-list li button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.programs-list li button:hover {
+  background-color: #c82333;
+}
+
+.edit-form {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-top: 30px;
+}
+
+.edit-form h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.edit-form input,
+.edit-form textarea,
+.edit-form button {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.edit-form button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-form button:hover {
+  background-color: #218838;
+}
+
+img {
+  max-width: 200px;
+  height: auto;
+}
+
+h1,
+h2,
+p {
+  color: #fff;
+}
+
+h1 {
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+  .programs-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .programs-list li img {
+    width: 100%;
+    height: auto;
+  }
+
+  form input,
+  form textarea,
+  form select {
+    width: 100%;
+  }
+}

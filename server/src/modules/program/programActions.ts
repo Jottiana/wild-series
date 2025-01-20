@@ -70,7 +70,13 @@ const edit: RequestHandler = async (req, res, next) => {
     const id = Number(req.params.id);
     const { title, synopsis, poster, country, year } = req.body;
 
-    const updated = await ProgramRepository.update(id, { title, synopsis, poster, country, year });
+    const updated = await ProgramRepository.update(id, {
+      title,
+      synopsis,
+      poster,
+      country,
+      year,
+    });
 
     if (updated) {
       res.sendStatus(204);
@@ -81,7 +87,6 @@ const edit: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
-
 
 const deleteProgram: RequestHandler = async (req, res, next) => {
   try {
@@ -101,4 +106,4 @@ const deleteProgram: RequestHandler = async (req, res, next) => {
 
 // Export them to import them somewhere else
 
-export default {  browse, read, add, edit, delete: deleteProgram };
+export default { browse, read, add, edit, delete: deleteProgram };

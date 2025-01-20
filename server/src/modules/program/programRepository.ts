@@ -22,7 +22,7 @@ class ProgramRepository {
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
       "select * from program where id = ?",
-      [id]
+      [id],
     );
     return rows[0] as Program | undefined;
   }
@@ -31,7 +31,13 @@ class ProgramRepository {
   async create(program: Omit<Program, "id">) {
     const [result] = await databaseClient.query<Result>(
       "insert into program (title, synopsis, poster, country, year) values (?, ?, ?, ?, ?)",
-      [program.title, program.synopsis, program.poster, program.country, program.year]
+      [
+        program.title,
+        program.synopsis,
+        program.poster,
+        program.country,
+        program.year,
+      ],
     );
     return result.insertId;
   }
@@ -46,7 +52,14 @@ class ProgramRepository {
         country = coalesce(?, country), 
         year = coalesce(?, year)
       where id = ?`,
-      [program.title, program.synopsis, program.poster, program.country, program.year, id]
+      [
+        program.title,
+        program.synopsis,
+        program.poster,
+        program.country,
+        program.year,
+        id,
+      ],
     );
     return result.affectedRows > 0;
   }
@@ -55,7 +68,7 @@ class ProgramRepository {
   async delete(id: number) {
     const [result] = await databaseClient.query<Result>(
       "delete from program where id = ?",
-      [id]
+      [id],
     );
     return result.affectedRows > 0;
   }
