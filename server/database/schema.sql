@@ -1,6 +1,6 @@
 create table user (
   id int unsigned primary key auto_increment not null,
-  email varchar(255) not null unique,
+  email varchar(255) not null unique check (email regexp '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'),
   password varchar(255) not null
 );
 
@@ -8,7 +8,7 @@ create table item (
   id int unsigned primary key auto_increment not null,
   title varchar(255) not null,
   user_id int unsigned not null,
-  foreign key(user_id) references user(id)
+  foreign key(user_id) references user(id) on delete cascade
 );
 
 create table category (
@@ -18,13 +18,13 @@ create table category (
 
 create table program (
   id int unsigned primary key auto_increment not null,
-  title varchar(255) not null,
-  synopsis text not null,
+  title varchar(255) not null check (title != ''),
+  synopsis text not null check (lenght(synopsis) > 0),
   poster text,
-  country varchar(255) not null,  
-  year int not null,
+  country varchar(255) not null check (country != ''),  
+  year int not null check (year > 1900),
   category_id int unsigned not null,
-  foreign key(category_id) references category(id)
+  foreign key(category_id) references category(id) on delete set null
 );
 
 insert into user(id, email, password)

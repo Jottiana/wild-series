@@ -9,6 +9,7 @@ type Program = {
   poster: string;
   country: string;
   year: number;
+  category_id: number;
 };
 
 class ProgramRepository {
@@ -30,13 +31,14 @@ class ProgramRepository {
   // Add (Create)
   async create(program: Omit<Program, "id">) {
     const [result] = await databaseClient.query<Result>(
-      "insert into program (title, synopsis, poster, country, year) values (?, ?, ?, ?, ?)",
+      "insert into program (title, synopsis, poster, country, year, category_id) values (?, ?, ?, ?, ?, ?)",
       [
         program.title,
         program.synopsis,
         program.poster,
         program.country,
         program.year,
+        program.category_id,
       ],
     );
     return result.insertId;
@@ -50,7 +52,8 @@ class ProgramRepository {
         synopsis = coalesce(?, synopsis), 
         poster = coalesce(?, poster), 
         country = coalesce(?, country), 
-        year = coalesce(?, year)
+        year = coalesce(?, year),
+        category_id = coalesce(?, category_id)
       where id = ?`,
       [
         program.title,
@@ -58,6 +61,7 @@ class ProgramRepository {
         program.poster,
         program.country,
         program.year,
+        program.category_id,
         id,
       ],
     );
